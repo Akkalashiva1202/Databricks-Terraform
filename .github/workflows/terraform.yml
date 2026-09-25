@@ -24,10 +24,14 @@ jobs:
         run: terraform fmt -check -recursive
 
       - name: Terraform Init
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         run: terraform init
 
       - name: Terraform Validate
         run: terraform validate
 
       - name: Terraform Plan
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
         run: terraform plan
